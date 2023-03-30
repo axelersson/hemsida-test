@@ -1,0 +1,26 @@
+{
+  "name": "hemsida-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "devStart": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/axelersson/hemsida-test.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/axelersson/hemsida-test/issues"
+  },
+  "homepage": "https://github.com/axelersson/hemsida-test#readme",
+  "dependencies": {
+    "mongoose": "^7.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
