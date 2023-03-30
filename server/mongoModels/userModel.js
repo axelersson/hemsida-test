@@ -1,4 +1,4 @@
-/* const mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
 const userModel = new mongoose.Schema({
   firstName: String,
@@ -6,5 +6,8 @@ const userModel = new mongoose.Schema({
   email: String,
 });
 
+console.log("hej");
+
+userModel.path("_id");
+
 module.exports = mongoose.model("User", userModel);
- */
