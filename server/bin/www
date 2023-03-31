@@ -8,6 +8,7 @@ var app = require("../app");
 var debug = require("debug")("server:server");
 var http = require("http");
 var mongoose = require("mongoose");
+var { loginString } = require("../loginString");
 
 /**
  * Get port from environment and store in Express.
@@ -20,6 +21,7 @@ app.set("port", port);
  * Create HTTP server.
  */
 
+const loadLogin = loginString();
 var server = http.createServer(app);
 
 /**
@@ -27,22 +29,18 @@ var server = http.createServer(app);
  */
 
 mongoose
-  .connect(
-    "mongodb+srv://axelersson:rQW9bfxk38rZu5AW@cluster0.ib24pql.mongodb.net/test",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  )
+  .connect(`mongodb+srv://${loadLogin}@cluster0.ib24pql.mongodb.net/test`, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() =>
-    server
-      .listen(port, () => {
-        console.log(`Server running on port ${port}`);
-      })
-      .catch((error) => {
-        console.log("Error connecting to MongoDB");
-      })
-  );
+    server.listen(port, () => {
+      console.log(`Server running on port ${port}`);
+    })
+  )
+  .catch((error) => {
+    console.log("Error connecting to MongoDB");
+  });
 /*
  */
 server.on("error", onError);
