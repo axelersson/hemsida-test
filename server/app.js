@@ -1,12 +1,29 @@
 var express = require("express");
 var path = require("path");
+var bodyParser = require("body-parser");
+var corsImport = require("cors");
+var dotenv = require("dotenv");
+var helmet = require("helmet");
+var path = require("path");
+var logger = require("morgan");
+
 /* var cookieParser = require('cookie-parser'); */
-/* var logger = require("morgan"); */
+
+/* CONFIGURATIONS */
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 
 var app = express();
+
+dotenv.config();
+app.use(express.json());
+app.use(helmet());
+app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
+app.use(logger("common"));
+app.use(bodyParser.json({ limit: "30mb", extended: true }));
+app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
+app.use(cors());
 
 /* app.use(logger("dev")); */
 app.use(express.json());
