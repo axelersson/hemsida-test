@@ -28,10 +28,6 @@ var server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 
-/*ROUTES WITH FILES*/
-
-app.post("/auth/register", upload.single);
-
 mongoose
   .connect(`mongodb+srv://${loadLogin}@cluster0.ib24pql.mongodb.net/test`, {
     useNewUrlParser: true,
